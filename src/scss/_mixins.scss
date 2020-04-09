@@ -1,0 +1,226 @@
+$pi: 3.14159265359;
+$_precision: 10;
+
+@function pow($base, $exp) {
+    $value: $base;
+    @if $exp > 1 {
+        @for $i from 2 through $exp {
+            $value: $value * $base;
+        }
+    }
+    @if $exp < 1{
+        @for $i from 0 through -$exp {
+            $value: $value / $base;
+        }
+    }
+    @return $value;
+}
+
+@function fact($num) {
+    $fact: 1;
+    @if $num > 0{
+        @for $i from 1 through $num {
+            $fact: $fact * $i;
+        }
+    }
+    @return $fact;
+}
+
+@function _to_unitless_rad($angle) {
+    @if unit($angle) == "deg" {
+        $angle: $angle / 180deg * $pi;
+    }
+    @if unit($angle) == "rad" {
+        $angle: $angle / 1rad;
+    }
+    @return $angle;
+}
+
+@function sin($angle){
+    $a: _to_unitless_rad($angle);
+    $sin: $a;
+    @for $n from 1 through $_precision {
+        $sin: $sin + (pow(-1, $n) / fact(2 * $n + 1) ) * pow($a, (2 * $n + 1));
+    }
+    @return $sin;
+}
+
+@function cos($angle){
+    $a: _to_unitless_rad($angle);
+    $cos: 1;
+    @for $n from 1 through $_precision {
+        $cos: $cos + ( pow(-1,$n) / fact(2*$n) ) * pow($a,2*$n);
+    }
+    @return $cos;
+}
+
+@function tan($angle){
+    @return sin($angle) / cos($angle);
+}
+
+@mixin respond-width($media) {
+    @media only screen and (max-width: #{$media}px) { @content; }
+}
+
+@mixin respond-height($media) {
+    @media only screen and (max-height: #{$media}px) { @content; }
+}
+
+@mixin respond-width-height($width, $height) {
+    @media only screen and (max-width: #{$width}px), screen and (max-height: #{$height}px) { @content; }
+}
+
+@mixin respond-width-m-height($width, $height) {
+    @media only screen and (min-width: #{$width}px) and (max-height: #{$height}px) { @content; }
+}
+%clearfix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+@mixin pseudo-styler() {
+    position: absolute;
+    content: '';
+    display: block;
+}
+
+
+@mixin gpu() {
+    transform: translate3d(0, 0, 0);
+}
+
+@mixin breakpoint($class) {
+    @if $class == w1600 {
+        @media only screen and (max-width: 1600px) { @content; }
+    } @else if $class == w1440 {
+        @media only screen and (max-width: 1445px) { @content; }
+    } @else if $class == w1366 {
+        @media only screen and (max-width: 1365px) { @content; }
+    } @else if $class == w1200 {
+        @media only screen and (max-width: 1170px) { @content; }
+    } @else if $class == w1000 {
+        @media only screen and (max-width: 980px) { @content; }
+    } @else if $class == w768 {
+        @media only screen and (max-width: 765px) { @content; }
+    } @else if $class == w500 {
+        @media only screen and (max-width: 576px) { @content; }
+    }
+}
+
+@mixin stretch {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+@mixin image-reset {
+    max-width: 99999px !important;
+    max-height: 99999px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+@mixin grab-cursor {
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: -o-grab;
+    cursor: -ms-grab;
+    cursor: grab;
+}
+
+@mixin grabbing-cursor {
+    cursor: move;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: -o-grabbing;
+    cursor: -ms-grabbing;
+    cursor: grabbing;
+}
+
+@mixin center {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+}
+
+@mixin focus {
+    outline: 0;
+}
+
+@mixin no-transform {
+    transform: none !important;
+}
+
+@mixin transition-for-slide {
+    transition-property: transform, width;
+    transition-timing-function: cubic-bezier(.1, 0, .25, 1);
+    transition-duration: 0ms;
+}
+
+@mixin select {
+    user-select:initial;
+}
+
+@mixin no-select {
+    user-select:none;
+}
+
+@mixin hidden {
+    position: absolute;
+    left: -99999px;
+    top: -99999px;
+    z-index: -1;
+}
+
+@mixin visible {
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: auto;
+    opacity: 1;
+}
+
+@mixin no-tap {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder { @content }
+    &:-moz-placeholder { @content }
+    &::-moz-placeholder { @content }
+    &:-ms-input-placeholder { @content }
+}
+
+@mixin set-sink-selector-style {
+    &:hover,
+    &:link,
+    &:active,
+    &:visited {
+        @content;
+    }
+}
+
+@mixin hide-scroll-bar{
+    &::-webkit-scrollbar * {
+        background:transparent;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar {
+        display: none;
+        background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
+}

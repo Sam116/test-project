@@ -1,0 +1,27 @@
+.element-click-test {
+    max-height: 300px;
+    overflow: auto;
+    max-width: 300px;
+
+    .item {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid $light-gray-color;
+        transition: background .3s ease-in-out, border-color .3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            border-color: $blue-color;
+        }
+
+        &.selected {
+            background: $blue-color;
+            border-color: $blue-color;
+            color: #fff;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

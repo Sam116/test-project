@@ -1,0 +1,265 @@
+html {
+    height: 100%;
+}
+
+html,
+body {
+    background: #fff;
+    font-size: 16px;
+    color: $main-color;
+    font-family: $main-font;
+}
+
+body {
+    min-width: 360px;
+    min-height: 100%;
+    -webkit-tap-highlight-color: transparentize($main-color, .9);
+}
+
+p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+b,
+strong {
+    font-weight: 700;
+}
+
+a,
+a:link,
+a:visited {
+    color: $blue-color;
+    text-decoration: none;
+    transition: color .4s $anim-cubic;
+}
+
+a:hover {
+    color: $main-color;
+}
+
+.page-width {
+    padding: 0 50px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1400px;
+    @include breakpoint(w768) {
+        padding: 0 30px;
+    }
+    @include breakpoint(w500) {
+        padding: 0 20px;
+    }
+}
+
+.page-wrap {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+    transition: opacity .4s $anim-cubic;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.page-row {
+    display: flex;
+    margin: 0 -15px;
+    @include breakpoint(w1000) {
+        margin: 0 -10px;
+    }
+    @include breakpoint(w500) {
+        flex-wrap: wrap;
+    }
+
+    &--large {
+        margin: 0 -30px;
+        @include breakpoint(w1000) {
+            margin: 0 -15px;
+        }
+    }
+
+    &.page-row--small {
+        margin: 0 -5px;
+    }
+
+    &--middle {
+        align-items: center;
+    }
+
+    &--between {
+        justify-content: space-between;
+    }
+
+    &--bottom {
+        align-items: flex-end;
+    }
+
+    &--wrap {
+        flex-wrap: wrap;
+    }
+}
+
+.page-col {
+    padding: 0 15px;
+    box-sizing: border-box;
+    @include breakpoint(w1000) {
+        padding: 0 10px;
+    }
+    @include breakpoint(w500) {
+        width: 100%;
+    }
+
+    &--w50 {
+        width: 50%;
+        @include breakpoint(w768) {
+            width: 100%;
+        }
+
+        &.page-col--w100-tablet {
+            @include breakpoint(w1000) {
+                width: 100%;
+            }
+        }
+    }
+
+    &--w33 {
+        width: 33.33%;
+        @include breakpoint(w768) {
+            width: 50%;
+        }
+        @include breakpoint(w500) {
+            width: 100%;
+            &.page-col--w33-m {
+                width: 33.3%;
+            }
+        }
+    }
+
+    &--w25 {
+        width: 25%;
+        @include breakpoint(w768) {
+            width: 50%;
+        }
+    }
+
+    &--large {
+        padding: 0 30px;
+        @include breakpoint(w1000) {
+            padding: 0 15px;
+        }
+    }
+
+    &.page-col--small {
+        padding: 0 5px;
+    }
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.no-scroll {
+    overflow-y: scroll;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    body {
+        height: auto;
+        overflow: hidden;
+    }
+}
+
+.sprite-image {
+    position: fixed;
+    visibility: hidden;
+    z-index: -1;
+    left: 0;
+    top: 0;
+}
+
+.no-transition * {
+    transition: none !important;
+}
+
+.vertical-section {
+    margin: 75px 0;
+    @include breakpoint(w1000) {
+        margin: 60px 0;
+    }
+    @include breakpoint(w768) {
+        margin: 50px 0;
+    }
+    @include breakpoint(w500) {
+        margin: 40px 0;
+    }
+
+    &.vertical-section--first {
+        margin-top: 0;
+    }
+
+    &.vertical-section--last {
+        margin-bottom: 0;
+    }
+}
+
+.h10-separator {
+    height: 10px;
+}
+
+.h20-separator {
+    height: 20px;
+}
+
+.h30-separator {
+    height: 30px;
+}
+
+hr {
+    height: 1px;
+    margin: 20px 0;
+    background: $light-gray-color;
+    padding: 0;
+    border: none;
+}
+
+h2, .h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+code {
+    background: $light-blue-color;
+    padding: 20px 0;
+    display: block;
+    white-space: pre;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    overflow: auto;
+    @include breakpoint(w500) {
+        margin: 0 -20px 25px;
+    }
+}
+
+.btn {
+    color: #fff;
+    background: $blue-color;
+    border-radius: 4px;
+    font-weight: 700;
+    padding: 15px 30px;
+    @include set-sink-selector-style() {
+        color: #fff;
+        transition: all .4s ease-in-out;
+    }
+
+    &:hover {
+        color: #fff;
+        background: $blue-color-hover;
+    }
+}

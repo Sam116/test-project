@@ -1,0 +1,67 @@
+@@include('templates/partials/header.html')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+
+<section class="vertical-section">
+    <h2>9.</h2>
+    <p>
+        Что такое Ext.each и Ext.iterate, и чем они отличаются?
+    </p>
+
+    Ext.iterate надстройка над Ext.each, позволяет делать цикл по массиву или объекту, сама определяет, что вызывать Ext.Array.each или Ext.Object.each
+
+</section>
+<hr>
+
+<section class="vertical-section">
+    <h2>10.</h2>
+    <p>
+        Имеется массив объектов [{ x: ‘val 1’, y: 2 }, { x: ‘val 5’, y: 5 }, { x: ‘val 2’, y: 4 }]. Каким образом получить массив из значений поля x средствами ExtJS?
+    </p>
+
+    <code>
+        var testArr = [{ x: 'val 1', y: 2 }, { x: 'val 5', y: 5 }, { x: 'val 2', y: 4 }];
+
+        var result = Ext.Array.map(testArr, function(item){
+            return item.x;
+        });
+    </code>
+</section>
+<hr>
+
+<section class="vertical-section">
+    <h2>11.</h2>
+    <p>
+        Каким образом подписаться на событие клика по кнопке только первый раз?
+    </p>
+
+    <code>
+        function clickTest(){
+            console.log('first click');
+            removeEventListener('click', clickTest);
+        }
+
+        addEventListener('click', clickTest);
+    </code>
+</section>
+<hr>
+
+
+<section class="vertical-section">
+    <h2>12.</h2>
+    <p>
+        Используя ExtJS 6 создайте компонент Form с тремя полями:<br>
+        - firstName (строка)<br>
+        - lastName (строка)<br>
+        - age (целое число)<br>
+        Подпишитесь на изменение значений во всех полях и покажите через метод Ext.toast имя поля и новое значение.
+    </p>
+
+    <div id="ext-form" class="ext-form">
+
+    </div>
+</section>
+
+
+
+@@include('templates/partials/footer.html')

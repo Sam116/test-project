@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" id="vp" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="img/share-pic.png"><!-- дописать полный путь с http -->
+    <link rel="image_src" href="img/share-pic.png"> <!-- дописать полный путь с http -->
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="pageDescription" content="">
+    <meta property="twitterDescription" content="">
+    <meta name="description" content="">
+
+    <title>Test Project Nikita Platonov</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="img/favicons/site.webmanifest">
+    <link rel="mask-icon" href="img/favicons/safari-pinned-tab.svg" color="#E9393A">
+    <link rel="shortcut icon" href="img/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#E9393A">
+    <meta name="msapplication-config" content="img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#000">
+
+    <link rel="stylesheet" href="css/styles.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap&subset=cyrillic" type="text/css"
+          rel="stylesheet"/>
+
+</head>
+
+<body ontouchstart>
+
+<div class="page-wrap">
+
+    <header class="page-header">
+
+    </header>
+
+    <div class="page-content">
+
+        <div class="page-width">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all.js"></script>
+
+<section class="vertical-section">
+    <h2>9.</h2>
+    <p>
+        Что такое Ext.each и Ext.iterate, и чем они отличаются?
+    </p>
+
+    Ext.iterate надстройка над Ext.each, позволяет делать цикл по массиву или объекту, сама определяет, что вызывать Ext.Array.each или Ext.Object.each
+
+</section>
+<hr>
+
+<section class="vertical-section">
+    <h2>10.</h2>
+    <p>
+        Имеется массив объектов [{ x: ‘val 1’, y: 2 }, { x: ‘val 5’, y: 5 }, { x: ‘val 2’, y: 4 }]. Каким образом получить массив из значений поля x средствами ExtJS?
+    </p>
+
+    <code>
+        var testArr = [{ x: 'val 1', y: 2 }, { x: 'val 5', y: 5 }, { x: 'val 2', y: 4 }];
+
+        var result = Ext.Array.map(testArr, function(item){
+            return item.x;
+        });
+    </code>
+</section>
+<hr>
+
+<section class="vertical-section">
+    <h2>11.</h2>
+    <p>
+        Каким образом подписаться на событие клика по кнопке только первый раз?
+    </p>
+
+    <code>
+        function clickTest(){
+            console.log('first click');
+            removeEventListener('click', clickTest);
+        }
+
+        addEventListener('click', clickTest);
+    </code>
+</section>
+<hr>
+
+<section class="vertical-section">
+    <h2>12.</h2>
+    <p>
+        Используя ExtJS 6 создайте компонент Form с тремя полями:<br>
+        — firstName (строка)<br>
+        — lastName (строка)<br>
+        — age (целое число)<br>
+        Подпишитесь на изменение значений во всех полях и покажите через метод Ext.toast имя поля и новое значение.
+    </p>
+
+    <div id="ext-form" class="ext-form">
+
+    </div>
+</section>
+
+</div> <!-- .page-width -->
+</div> <!-- .page-content -->
+<footer class="page-footer">
+    <div class="page-width">
+
+    </div>
+</footer>
+
+</div> <!-- .page-wrap -->
+
+<script src="js/scripts.js"></script>
+
+</body>
+</html>
