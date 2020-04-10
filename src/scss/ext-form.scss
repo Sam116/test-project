@@ -12,8 +12,11 @@
         border: 1px solid transparent;
         transition: all .4s ease-in-out;
 
-        &:focus {
+        &:hover{
             border-color: $blue-color;
+        }
+        &:focus {
+            border-color: $blue-color-hover;
         }
     }
 

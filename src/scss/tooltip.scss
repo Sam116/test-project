@@ -4,6 +4,7 @@
     padding: 15px;
     border-radius: 4px;
     color: #fff;
+    transition: background-color .3s ease-in-out;
 
     &__text {
         position: absolute;
@@ -23,7 +24,6 @@
         margin-top: 18px;
         font-size: 14px;
         min-width: 100px;
-        box-shadow: 0 0 7px rgba(0, 0, 0, 0.07);
 
         &:before {
             @include pseudo-styler();
@@ -106,6 +106,7 @@
     }
 
     &:hover {
+        background: $blue-color-hover;
         .tooltip__text {
             visibility: visible;
             opacity: 1;

@@ -58,15 +58,14 @@
         position: sticky;
         left: 0;
         z-index: 5;
-
+        min-width: 110px;
     }
 
     th.fixed-left {
         z-index: 6;
     }
-
-
 }
+
 
 .scrollable-table2 {
     position: relative;
@@ -138,6 +137,9 @@
         z-index: 6;
     }
 
+    .fixed-left {
+        min-width: 110px;
+    }
     .cloned-cell {
         position: absolute;
         left: 0;
